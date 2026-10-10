@@ -1,0 +1,32 @@
+name: fresher-job-agent
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours (UTC)
+  workflow_dispatch: {}      # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write            # needed to commit seen.json back
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Run agent
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          # Alerts go to bikted29@gmail.com by default; set an EMAIL_TO secret to override.
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python agent.py
+      - name: Save seen jobs
+        run: |
+          git config user.name "job-agent"
+          git config user.email "job-agent@users.noreply.github.com"
+          git add seen.json
+          git diff --staged --quiet || git commit -m "update seen jobs" && git push
