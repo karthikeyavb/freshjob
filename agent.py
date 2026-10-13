@@ -13,6 +13,7 @@ import os
 import re
 import smtplib
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -151,8 +152,66 @@ FETCHERS = {
 }
 
 
+CACHE_FILE = ROOT / "sources_cache.json"
+PROBE_ORDER = ["greenhouse", "lever", "ashby", "smartrecruiters"]
+_cache = json.loads(CACHE_FILE.read_text()) if CACHE_FILE.exists() else {}
+
+
+def slug_candidates(c):
+    if c.get("slugs"):
+        return list(c["slugs"])
+    base = re.sub(r"\(.*?\)", "", c["name"]).lower()
+    base = re.sub(r"\b(technologies|technology|tech|labs|corporation|private limited)\b", "", base).strip()
+    plain = re.sub(r"[^a-z0-9]", "", base)
+    dashed = re.sub(r"[^a-z0-9]+", "-", base).strip("-")
+    full = re.sub(r"[^a-z0-9]", "", c["name"].lower())
+    return list(dict.fromkeys(x for x in (plain, dashed, full) if len(x) >= 4))
+
+
+def discover(c):
+    """Try the company's likely slug on each ATS. Returns (ats, slug) or None.
+    A greenhouse board must also have a name that matches, to avoid look-alike boards."""
+    name_tokens = set(re.findall(r"[a-z0-9]+", c["name"].lower())) - {"ai", "technologies", "tech"}
+    for slug in slug_candidates(c):
+        for ats in PROBE_ORDER:
+            try:
+                if ats == "greenhouse":
+                    r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{slug}",
+                                     headers=HEADERS, timeout=TIMEOUT)
+                    if r.ok:
+                        board = set(re.findall(r"[a-z0-9]+", r.json().get("name", "").lower()))
+                        if name_tokens & board or c.get("slugs"):
+                            return ats, slug
+                    continue
+                jobs = list(FETCHERS[ats]({"slug": slug}))
+                if jobs:
+                    return ats, slug
+            except Exception:  # noqa: BLE001
+                continue
+    return None
+
+
+def resolve(c):
+    """Turn an `ats: auto` entry into a concrete source, using/refreshing the cache."""
+    if c["ats"] != "auto":
+        return c
+    hit = _cache.get(c["name"])
+    # A miss is retried after a week (the company may add a board, or a request may have failed).
+    stale_miss = isinstance(hit, dict) and time.time() - hit.get("miss", 0) > 7 * 86400
+    if (hit is None or stale_miss) and not c.get("skip_auto"):
+        found = discover(c)
+        _cache[c["name"]] = list(found) if found else {"miss": int(time.time())}
+        hit = _cache[c["name"]]
+    if isinstance(hit, list):
+        return {**c, "ats": hit[0], "slug": hit[1], "auto_found": True}
+    return {**c, "ats": "none"}
+
+
 def run_company(c):
     try:
+        c = resolve(c)
+        if c["ats"] == "none":
+            return c, [], "no job board found (add slug/url in companies.yaml)"
         jobs = list(FETCHERS[c["ats"]](c))
         for j in jobs:
             j["company"] = c["name"]
@@ -205,18 +264,25 @@ def main():
 
     with ThreadPoolExecutor(max_workers=12) as ex:
         results = list(ex.map(run_company, companies))
+    CACHE_FILE.write_text(json.dumps(_cache, indent=1, sort_keys=True))
+
+    working = [c["name"] for c, _, err in results if not err]
+    uncovered = [c["name"] for c, _, err in results if err]
+    coverage = f"Coverage: {len(working)}/{len(results)} companies readable."
 
     if args.verify:
-        ok = 0
         for c, jobs, err in results:
+            how = "auto" if c.get("auto_found") else c["ats"]
             status = f"OK  ({len(jobs)} jobs)" if not err else f"FAIL {err}"
-            ok += not err
-            print(f"{c['name']:<22} [{c['ats']:<15}] {status}")
-        print(f"\n{ok}/{len(results)} sources working. Fix or remove the FAIL ones in companies.yaml.")
+            tag = f"{c['ats']}:{c.get('slug', '')}" if c.get("auto_found") else how
+            print(f"{c['name']:<28} [{tag:<28}] {status}")
+        print(f"\n{coverage} Auto-discovered boards are saved in sources_cache.json; "
+              "eyeball them to make sure each is the right company.")
         return
 
     seen = json.loads(SEEN_FILE.read_text()) if SEEN_FILE.exists() else {}
-    first_run = not seen
+    first_run = "__started__" not in seen
+    seen["__started__"] = "1"
     new_jobs, matches = [], 0
     for c, jobs, err in results:
         if err:
@@ -234,14 +300,21 @@ def main():
         print(format_jobs(new_jobs))
         return
 
-    if new_jobs:
-        msg = format_jobs(new_jobs)
-        if not send_email(f"{len(new_jobs)} new fresher jobs", msg):
+    if new_jobs or first_run:
+        msg = format_jobs(new_jobs, limit=200)
+        if first_run:
+            subject = f"Fresher job agent started: {len(new_jobs)} current openings"
+            msg += (f"\n\n{coverage}\nNot readable yet ({len(uncovered)}): " + ", ".join(uncovered)
+                    + "\nAdd a slug or careers URL for these in companies.yaml.")
+        else:
+            subject = f"{len(new_jobs)} new fresher jobs"
+        if not send_email(subject, msg):
             print(msg)
             print("\n[info] SMTP_USER / SMTP_PASS not set; printed instead of emailing.")
     SEEN_FILE.write_text(json.dumps(seen, indent=1))
+    print(coverage)
     if first_run:
-        print("First run: current matches saved. You'll only be alerted on NEW ones from now on.")
+        print("First run: current openings emailed once. After this you only get NEW ones.")
 
 
 if __name__ == "__main__":

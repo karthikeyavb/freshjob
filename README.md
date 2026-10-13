@@ -1,6 +1,6 @@
 # Fresher Job Agent
 
-Checks career pages of ~70 Indian startups, product companies and AI companies every 6 hours and
+Checks career pages of ~190 Indian startups, product, fintech and AI companies (the lists from your five PDFs, de-duplicated, plus a few extras) every 6 hours and
 emails you at bikted29@gmail.com when a **new** fresher / intern / entry-level engineering
 role appears. Runs free on GitHub Actions, so your laptop doesn't need to be on.
 
@@ -15,8 +15,18 @@ role appears. Runs free on GitHub Actions, so your laptop doesn't need to be on.
    `SMTP_USER` (the sending Gmail address) and `SMTP_PASS` (the app password).
    Alerts are emailed to **bikted29@gmail.com** by default; add an `EMAIL_TO` secret to change it.
    Check Spam the first time and mark the email "Not spam".
-4. **Actions tab → fresher-job-agent → Run workflow** to trigger the first run. The first run saves
-   everything currently open; after that you only get alerts for new postings.
+4. **Actions tab → fresher-job-agent → Run workflow** to trigger the first run. The first run emails you every
+   fresher opening that is open right now, plus a list of companies it couldn't read; after that you only get
+   emails for new postings.
+
+## How companies are found
+
+Your PDFs only give company names, so most entries are `ats: auto`: on the first run the agent tries each
+company's likely job-board name on Greenhouse, Lever, Ashby and SmartRecruiters, and remembers what it
+finds in `sources_cache.json` (retrying misses weekly). Companies with no public board of those four
+(many big ones use Workday or their own site) show up in the first email under "Not readable yet".
+For those, add `ats: page` + `url:` (weak) or the right `slug` in `companies.yaml`.
+Auto-discovery can occasionally match a look-alike board, so skim `sources_cache.json` once.
 
 ## Check which companies actually work (important)
 

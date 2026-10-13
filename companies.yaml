@@ -7,6 +7,8 @@ filters:
   location_keywords: [india, bengaluru, bangalore, hyderabad, mumbai, pune, chennai, delhi, gurgaon,
                       gurugram, noida, kolkata, ahmedabad, remote, vijayawada]
 
+# ats: auto                                       -> agent tries to find the company's job board itself
+#      (greenhouse/lever/ashby/smartrecruiters) and caches the result in sources_cache.json
 # ats: greenhouse | lever | ashby | smartrecruiters  -> slug is the board name in the ATS URL
 #      page                                         -> url is a static careers page (weak fallback)
 #
@@ -15,77 +17,195 @@ filters:
 # the URL (e.g. boards.greenhouse.io/<slug>, jobs.lever.co/<slug>, jobs.ashbyhq.com/<slug>).
 
 companies:
-  # ---------------- Indian startups / unicorns ----------------
-  - {name: Razorpay,     category: startup, ats: greenhouse, slug: razorpaysoftwareprivatelimited}
-  - {name: Groww,        category: startup, ats: greenhouse, slug: groww}
-  - {name: Postman,      category: startup, ats: greenhouse, slug: postman}
-  - {name: Chargebee,    category: startup, ats: greenhouse, slug: chargebee}
-  - {name: Meesho,       category: startup, ats: lever,      slug: meesho}
-  - {name: CRED,         category: startup, ats: lever,      slug: dreamplug}
-  - {name: Paytm,        category: startup, ats: lever,      slug: paytm}
-  - {name: Unacademy,    category: startup, ats: lever,      slug: unacademy}
-  - {name: Jupiter,      category: startup, ats: lever,      slug: jupiter}
-  - {name: Dream11,      category: startup, ats: lever,      slug: dreamsports}
-  - {name: Zeta,         category: startup, ats: lever,      slug: zeta}
-  - {name: Slice,        category: startup, ats: lever,      slug: sliceit}
-  - {name: Swiggy,       category: startup, ats: page, url: "https://careers.swiggy.com/"}
-  - {name: Zomato,       category: startup, ats: page, url: "https://www.zomato.com/careers"}
-  - {name: PhonePe,      category: startup, ats: page, url: "https://www.phonepe.com/careers/"}
-  - {name: Zerodha,      category: startup, ats: page, url: "https://zerodha.com/careers/"}
-  - {name: Ola,          category: startup, ats: page, url: "https://www.olacabs.com/careers"}
-  - {name: Lenskart,     category: startup, ats: page, url: "https://www.lenskart.com/careers"}
-  - {name: Cars24,       category: startup, ats: page, url: "https://www.cars24.com/careers/"}
-  - {name: upGrad,       category: startup, ats: page, url: "https://www.upgrad.com/careers/"}
-  - {name: ShareChat,    category: startup, ats: page, url: "https://sharechat.com/careers"}
-  - {name: Urban Company, category: startup, ats: page, url: "https://careers.urbancompany.com/"}
-  - {name: Zepto,        category: startup, ats: page, url: "https://www.zeptonow.com/careers"}
-  - {name: Rapido,       category: startup, ats: page, url: "https://www.rapido.bike/Careers"}
-  - {name: Delhivery,    category: startup, ats: page, url: "https://www.delhivery.com/careers"}
-  - {name: BharatPe,     category: startup, ats: page, url: "https://bharatpe.com/careers"}
-  - {name: Pine Labs,    category: startup, ats: page, url: "https://www.pinelabs.com/careers"}
-  - {name: Nykaa,        category: startup, ats: page, url: "https://www.nykaa.com/careers"}
-  - {name: Licious,      category: startup, ats: page, url: "https://www.licious.in/careers"}
-  - {name: InMobi,       category: startup, ats: page, url: "https://www.inmobi.com/company/careers"}
-
-  # ---------------- Product companies (India engineering hubs) ----------------
-  - {name: Freshworks,   category: product, ats: page, url: "https://www.freshworks.com/company/careers/"}
-  - {name: Zoho,         category: product, ats: page, url: "https://www.zoho.com/careers/"}
-  - {name: Atlassian,    category: product, ats: page, url: "https://www.atlassian.com/company/careers/all-jobs"}
-  - {name: Adobe,        category: product, ats: page, url: "https://careers.adobe.com/us/en/search-results"}
-  - {name: Microsoft,    category: product, ats: page, url: "https://careers.microsoft.com/v2/global/en/home.html"}
-  - {name: Google,       category: product, ats: page, url: "https://www.google.com/about/careers/applications/jobs/results/?location=India"}
-  - {name: Amazon,       category: product, ats: page, url: "https://www.amazon.jobs/en/search?base_query=sde&loc_query=India"}
-  - {name: Flipkart,     category: product, ats: page, url: "https://www.flipkartcareers.com/"}
-  - {name: Uber,         category: product, ats: page, url: "https://www.uber.com/global/en/careers/list/?location=IND-Karnataka-Bangalore"}
-  - {name: Salesforce,   category: product, ats: page, url: "https://careers.salesforce.com/en/jobs/?search=&country=India"}
-  - {name: Intuit,       category: product, ats: page, url: "https://jobs.intuit.com/"}
-  - {name: Walmart Global Tech, category: product, ats: page, url: "https://careers.walmart.com/results?q=&page=1&jobCategory=0000015a-a2e8-d5a4-a1ff-b3e8c6f10000"}
-  - {name: Oracle,       category: product, ats: page, url: "https://careers.oracle.com/jobs/#en/sites/jobsearch/jobs?location=India"}
-  - {name: SAP Labs India, category: product, ats: page, url: "https://jobs.sap.com/search/?q=&locationsearch=India"}
-  - {name: Cisco,        category: product, ats: page, url: "https://jobs.cisco.com/jobs/SearchJobs/?21178=%5B169482%5D&21178_format=6020&listFilterMode=1"}
-  - {name: Browserstack, category: product, ats: page, url: "https://www.browserstack.com/careers"}
-  - {name: Druva,        category: product, ats: page, url: "https://www.druva.com/about/careers/"}
-  - {name: Thoughtspot,  category: product, ats: page, url: "https://www.thoughtspot.com/careers"}
-  - {name: Nutanix,      category: product, ats: page, url: "https://www.nutanix.com/company/careers"}
-  - {name: ServiceNow,   category: product, ats: page, url: "https://careers.servicenow.com/jobs/"}
-  - {name: Hasura,       category: product, ats: page, url: "https://hasura.io/careers"}
-  - {name: Hotstar / JioHotstar, category: product, ats: page, url: "https://careers.jiostar.com/"}
-
-  # ---------------- AI startups / AI-focused companies ----------------
-  - {name: Sarvam AI,    category: ai, ats: ashby, slug: sarvam}
-  - {name: Krutrim,      category: ai, ats: page, url: "https://www.olakrutrim.com/careers"}
-  - {name: Uniphore,     category: ai, ats: page, url: "https://www.uniphore.com/careers/"}
-  - {name: Observe.AI,   category: ai, ats: page, url: "https://www.observe.ai/careers"}
-  - {name: Yellow.ai,    category: ai, ats: page, url: "https://yellow.ai/careers/"}
-  - {name: Haptik,       category: ai, ats: page, url: "https://www.haptik.ai/careers"}
-  - {name: Fractal,      category: ai, ats: page, url: "https://fractal.ai/careers/"}
-  - {name: Gupshup,      category: ai, ats: page, url: "https://www.gupshup.io/careers"}
-  - {name: Mad Street Den (Vue.ai), category: ai, ats: page, url: "https://madstreetden.com/careers/"}
-  - {name: Wadhwani AI,  category: ai, ats: page, url: "https://www.wadhwaniai.org/careers/"}
-  - {name: Niramai,      category: ai, ats: page, url: "https://www.niramai.com/careers/"}
-  - {name: Sprinklr,     category: ai, ats: page, url: "https://www.sprinklr.com/careers/"}
-  - {name: Tredence,     category: ai, ats: page, url: "https://www.tredence.com/careers"}
-  - {name: Mu Sigma,     category: ai, ats: page, url: "https://www.mu-sigma.com/careers"}
-  - {name: Dataiku India, category: ai, ats: page, url: "https://www.dataiku.com/careers/"}
-  - {name: OpenAI,       category: ai, ats: ashby, slug: openai}
-  - {name: Anthropic,    category: ai, ats: greenhouse, slug: anthropic}
+  - {name: "Razorpay", category: startup, ats: greenhouse, slug: razorpaysoftwareprivatelimited}
+  - {name: "Groww", category: startup, ats: greenhouse, slug: groww}
+  - {name: "Postman", category: startup, ats: greenhouse, slug: postman}
+  - {name: "Chargebee", category: startup, ats: greenhouse, slug: chargebee}
+  - {name: "Meesho", category: startup, ats: lever, slug: meesho}
+  - {name: "CRED", category: startup, ats: lever, slug: dreamplug}
+  - {name: "Paytm", category: startup, ats: lever, slug: paytm}
+  - {name: "Unacademy", category: startup, ats: lever, slug: unacademy}
+  - {name: "Jupiter", category: startup, ats: lever, slug: jupiter}
+  - {name: "Dream11", category: startup, ats: lever, slug: dreamsports}
+  - {name: "Zeta", category: startup, ats: lever, slug: zeta}
+  - {name: "Slice", category: startup, ats: lever, slug: sliceit}
+  - {name: "Swiggy", category: startup, ats: page, url: "https://careers.swiggy.com/"}
+  - {name: "Zomato", category: startup, ats: page, url: "https://www.zomato.com/careers"}
+  - {name: "PhonePe", category: startup, ats: page, url: "https://www.phonepe.com/careers/"}
+  - {name: "Zerodha", category: startup, ats: page, url: "https://zerodha.com/careers/"}
+  - {name: "Ola", category: startup, ats: page, url: "https://www.olacabs.com/careers"}
+  - {name: "Lenskart", category: startup, ats: page, url: "https://www.lenskart.com/careers"}
+  - {name: "Cars24", category: startup, ats: page, url: "https://www.cars24.com/careers/"}
+  - {name: "upGrad", category: startup, ats: page, url: "https://www.upgrad.com/careers/"}
+  - {name: "ShareChat", category: startup, ats: page, url: "https://sharechat.com/careers"}
+  - {name: "Urban Company", category: startup, ats: page, url: "https://careers.urbancompany.com/"}
+  - {name: "Zepto", category: startup, ats: page, url: "https://www.zeptonow.com/careers"}
+  - {name: "Rapido", category: startup, ats: page, url: "https://www.rapido.bike/Careers"}
+  - {name: "Delhivery", category: startup, ats: page, url: "https://www.delhivery.com/careers"}
+  - {name: "BharatPe", category: startup, ats: page, url: "https://bharatpe.com/careers"}
+  - {name: "Pine Labs", category: startup, ats: page, url: "https://www.pinelabs.com/careers"}
+  - {name: "Nykaa", category: startup, ats: page, url: "https://www.nykaa.com/careers"}
+  - {name: "Licious", category: startup, ats: page, url: "https://www.licious.in/careers"}
+  - {name: "InMobi", category: startup, ats: page, url: "https://www.inmobi.com/company/careers"}
+  - {name: "Freshworks", category: product, ats: page, url: "https://www.freshworks.com/company/careers/"}
+  - {name: "Zoho", category: product, ats: page, url: "https://www.zoho.com/careers/"}
+  - {name: "Atlassian", category: product, ats: page, url: "https://www.atlassian.com/company/careers/all-jobs"}
+  - {name: "Adobe", category: product, ats: page, url: "https://careers.adobe.com/us/en/search-results"}
+  - {name: "Microsoft", category: product, ats: page, url: "https://careers.microsoft.com/v2/global/en/home.html"}
+  - {name: "Google", category: product, ats: page, url: "https://www.google.com/about/careers/applications/jobs/results/?location=India"}
+  - {name: "Amazon", category: product, ats: page, url: "https://www.amazon.jobs/en/search?base_query=sde&loc_query=India"}
+  - {name: "Flipkart", category: product, ats: page, url: "https://www.flipkartcareers.com/"}
+  - {name: "Uber", category: product, ats: page, url: "https://www.uber.com/global/en/careers/list/?location=IND-Karnataka-Bangalore"}
+  - {name: "Salesforce", category: product, ats: page, url: "https://careers.salesforce.com/en/jobs/?search=&country=India"}
+  - {name: "Intuit", category: product, ats: page, url: "https://jobs.intuit.com/"}
+  - {name: "Walmart Global Tech", category: product, ats: page, url: "https://careers.walmart.com/results?q=&page=1&jobCategory=0000015a-a2e8-d5a4-a1ff-b3e8c6f10000"}
+  - {name: "Oracle", category: product, ats: page, url: "https://careers.oracle.com/jobs/#en/sites/jobsearch/jobs?location=India"}
+  - {name: "SAP Labs India", category: product, ats: page, url: "https://jobs.sap.com/search/?q=&locationsearch=India"}
+  - {name: "Cisco", category: product, ats: page, url: "https://jobs.cisco.com/jobs/SearchJobs/?21178=%5B169482%5D&21178_format=6020&listFilterMode=1"}
+  - {name: "Browserstack", category: product, ats: page, url: "https://www.browserstack.com/careers"}
+  - {name: "Druva", category: product, ats: page, url: "https://www.druva.com/about/careers/"}
+  - {name: "Thoughtspot", category: product, ats: page, url: "https://www.thoughtspot.com/careers"}
+  - {name: "Nutanix", category: product, ats: page, url: "https://www.nutanix.com/company/careers"}
+  - {name: "ServiceNow", category: product, ats: page, url: "https://careers.servicenow.com/jobs/"}
+  - {name: "Hasura", category: product, ats: page, url: "https://hasura.io/careers"}
+  - {name: "Hotstar / JioHotstar", category: product, ats: page, url: "https://careers.jiostar.com/"}
+  - {name: "Sarvam AI", category: ai, ats: ashby, slug: sarvam}
+  - {name: "Krutrim", category: ai, ats: page, url: "https://www.olakrutrim.com/careers"}
+  - {name: "Uniphore", category: ai, ats: page, url: "https://www.uniphore.com/careers/"}
+  - {name: "Observe.AI", category: ai, ats: page, url: "https://www.observe.ai/careers"}
+  - {name: "Yellow.ai", category: ai, ats: page, url: "https://yellow.ai/careers/"}
+  - {name: "Haptik", category: ai, ats: page, url: "https://www.haptik.ai/careers"}
+  - {name: "Fractal", category: ai, ats: page, url: "https://fractal.ai/careers/"}
+  - {name: "Gupshup", category: ai, ats: page, url: "https://www.gupshup.io/careers"}
+  - {name: "Mad Street Den (Vue.ai)", category: ai, ats: page, url: "https://madstreetden.com/careers/"}
+  - {name: "Wadhwani AI", category: ai, ats: page, url: "https://www.wadhwaniai.org/careers/"}
+  - {name: "Niramai", category: ai, ats: page, url: "https://www.niramai.com/careers/"}
+  - {name: "Sprinklr", category: ai, ats: page, url: "https://www.sprinklr.com/careers/"}
+  - {name: "Tredence", category: ai, ats: page, url: "https://www.tredence.com/careers"}
+  - {name: "Mu Sigma", category: ai, ats: page, url: "https://www.mu-sigma.com/careers"}
+  - {name: "Dataiku India", category: ai, ats: page, url: "https://www.dataiku.com/careers/"}
+  - {name: "OpenAI", category: ai, ats: ashby, slug: openai}
+  - {name: "Anthropic", category: ai, ats: greenhouse, slug: anthropic}
+  - {name: "OYO", category: startup, ats: auto}
+  - {name: "OfBusiness", category: startup, ats: auto}
+  - {name: "Dailyhunt (VerSe)", category: startup, ats: auto}
+  - {name: "Physics Wallah", category: startup, ats: auto, slugs: ["physicswallah", "pw"]}
+  - {name: "Digit Insurance", category: startup, ats: auto}
+  - {name: "FirstCry", category: startup, ats: auto}
+  - {name: "Eruditus", category: startup, ats: auto, slugs: ["eruditus"]}
+  - {name: "LeadSquared", category: startup, ats: auto}
+  - {name: "Upstox", category: startup, ats: auto, slugs: ["upstox"]}
+  - {name: "Amagi", category: startup, ats: auto}
+  - {name: "Darwinbox", category: startup, ats: auto, slugs: ["darwinbox"]}
+  - {name: "Fractal Analytics", category: startup, ats: auto}
+  - {name: "CoinSwitch", category: startup, ats: auto, slugs: ["coinswitch"]}
+  - {name: "CoinDCX", category: startup, ats: auto, slugs: ["coindcx"]}
+  - {name: "ElasticRun", category: startup, ats: auto}
+  - {name: "DeHaat", category: startup, ats: auto}
+  - {name: "Ninjacart", category: startup, ats: auto}
+  - {name: "Ather Energy", category: startup, ats: auto}
+  - {name: "Ola Electric", category: startup, ats: auto}
+  - {name: "Skyroot Aerospace", category: startup, ats: auto, slugs: ["skyroot"]}
+  - {name: "Agnikul Cosmos", category: startup, ats: auto, slugs: ["agnikul"]}
+  - {name: "Glance", category: product, ats: auto, slugs: ["glance"]}
+  - {name: "Icertis", category: product, ats: auto, slugs: ["icertis"]}
+  - {name: "Capillary Technologies", category: product, ats: auto}
+  - {name: "Whatfix", category: product, ats: auto, slugs: ["whatfix"]}
+  - {name: "CleverTap", category: product, ats: auto, slugs: ["clevertap"]}
+  - {name: "HighRadius", category: product, ats: auto, slugs: ["highradius"]}
+  - {name: "Games24x7", category: product, ats: auto}
+  - {name: "MPL", category: product, ats: auto}
+  - {name: "MapmyIndia", category: product, ats: auto}
+  - {name: "Perfios", category: product, ats: auto}
+  - {name: "Policybazaar", category: product, ats: auto}
+  - {name: "boAt Lifestyle", category: product, ats: auto}
+  - {name: "Noise", category: product, ats: auto, skip_auto: true}
+  - {name: "Infra.Market", category: product, ats: auto}
+  - {name: "Moglix", category: product, ats: auto}
+  - {name: "Blinkit", category: startup, ats: auto}
+  - {name: "Juspay", category: startup, ats: auto, slugs: ["juspay"]}
+  - {name: "Pocket FM", category: startup, ats: auto, slugs: ["pocketfm"]}
+  - {name: "Classplus", category: startup, ats: auto, slugs: ["classplus"]}
+  - {name: "Dukaan", category: startup, ats: auto}
+  - {name: "Bizongo", category: startup, ats: auto}
+  - {name: "Spinny", category: startup, ats: auto, slugs: ["spinny"]}
+  - {name: "Axio (Capital Float)", category: startup, ats: auto}
+  - {name: "Niva Bupa", category: startup, ats: auto}
+  - {name: "Shadowfax", category: startup, ats: auto}
+  - {name: "M2P Fintech", category: startup, ats: auto}
+  - {name: "Euler Motors", category: startup, ats: auto}
+  - {name: "Navi Technologies", category: startup, ats: auto}
+  - {name: "Detect Technologies", category: startup, ats: auto, slugs: ["detect"]}
+  - {name: "SigTuple", category: startup, ats: auto}
+  - {name: "GreyOrange", category: startup, ats: auto, slugs: ["greyorange"]}
+  - {name: "Intello Labs", category: startup, ats: auto}
+  - {name: "Pixxel", category: startup, ats: auto, slugs: ["pixxel"]}
+  - {name: "CoRover.ai", category: ai, ats: auto}
+  - {name: "Hanooman AI", category: ai, ats: auto}
+  - {name: "Karya.ai", category: ai, ats: auto}
+  - {name: "E2E Networks", category: ai, ats: auto}
+  - {name: "e6data", category: ai, ats: auto}
+  - {name: "Neysa Networks", category: ai, ats: auto}
+  - {name: "Vodex AI", category: ai, ats: auto}
+  - {name: "Two Platforms", category: ai, ats: auto}
+  - {name: "Floatbot", category: ai, ats: auto}
+  - {name: "Entropik Tech", category: ai, ats: auto}
+  - {name: "Crux Intelligence", category: ai, ats: auto}
+  - {name: "Signzy", category: ai, ats: auto}
+  - {name: "InVideo", category: ai, ats: auto}
+  - {name: "Staqu Technologies", category: ai, ats: auto}
+  - {name: "Wysa", category: ai, ats: auto, skip_auto: true}
+  - {name: "Artivatic Data Labs", category: ai, ats: auto}
+  - {name: "LogiNext", category: ai, ats: auto}
+  - {name: "Lentra", category: ai, ats: auto}
+  - {name: "Qure.ai", category: ai, ats: auto}
+  - {name: "Niramai Health", category: ai, ats: auto}
+  - {name: "Ati Motors", category: ai, ats: auto}
+  - {name: "Cyanir Technologies", category: ai, ats: auto}
+  - {name: "DevRev", category: ai, ats: auto}
+  - {name: "Compiler AI", category: ai, ats: auto}
+  - {name: "Gan.ai", category: ai, ats: auto}
+  - {name: "Rephrase.ai (Adobe)", category: ai, ats: auto}
+  - {name: "Streamoid", category: ai, ats: auto}
+  - {name: "Vicara", category: ai, ats: auto, skip_auto: true}
+  - {name: "Aura AI", category: ai, ats: auto}
+  - {name: "HealthPlix", category: ai, ats: auto}
+  - {name: "OmniScience AI", category: ai, ats: auto}
+  - {name: "SpotDraft", category: ai, ats: auto}
+  - {name: "vahan.ai", category: ai, ats: auto}
+  - {name: "KredX", category: ai, ats: auto}
+  - {name: "Bash.ai", category: ai, ats: auto}
+  - {name: "Avishkaar", category: ai, ats: auto}
+  - {name: "LocoNav", category: ai, ats: auto}
+  - {name: "LimeChat", category: ai, ats: auto}
+  - {name: "PayU", category: fintech, ats: auto}
+  - {name: "MobiKwik", category: fintech, ats: auto}
+  - {name: "Fino Payments Bank", category: fintech, ats: auto}
+  - {name: "Mswipe", category: fintech, ats: auto}
+  - {name: "FSS", category: fintech, ats: auto}
+  - {name: "BankBazaar", category: fintech, ats: auto}
+  - {name: "Scripbox", category: fintech, ats: auto}
+  - {name: "Fisdom", category: fintech, ats: auto}
+  - {name: "Clear (ClearTax)", category: fintech, ats: auto}
+  - {name: "FundsIndia", category: fintech, ats: auto}
+  - {name: "ET Money", category: fintech, ats: auto}
+  - {name: "Kuvera", category: fintech, ats: auto}
+  - {name: "Lendingkart", category: fintech, ats: auto}
+  - {name: "KreditBee", category: fintech, ats: auto}
+  - {name: "InCred", category: fintech, ats: auto}
+  - {name: "NeoGrowth", category: fintech, ats: auto}
+  - {name: "LoanTap", category: fintech, ats: auto}
+  - {name: "Faircent", category: fintech, ats: auto}
+  - {name: "ZestMoney", category: fintech, ats: auto}
+  - {name: "FlexiLoans", category: fintech, ats: auto}
+  - {name: "ACKO", category: fintech, ats: auto}
+  - {name: "Turtlemint", category: fintech, ats: auto}
+  - {name: "RenewBuy", category: fintech, ats: auto}
+  - {name: "Coverfox", category: fintech, ats: auto}
+  - {name: "Niyo", category: fintech, ats: auto}
+  - {name: "Zaggle", category: fintech, ats: auto}
+  - {name: "Credgenics", category: fintech, ats: auto}
+  - {name: "Setu", category: fintech, ats: auto, slugs: ["setu"]}
+  - {name: "Open", category: fintech, ats: auto, slugs: ["open-money", "openfinancialtechnologies"]}
+  - {name: "Omnicard", category: fintech, ats: auto}
+  - {name: "Rupeek", category: fintech, ats: auto}
