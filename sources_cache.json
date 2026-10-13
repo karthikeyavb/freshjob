@@ -1,1 +1,376 @@
-{}
+{
+ "ACKO": {
+  "miss": 1791896477
+ },
+ "Agnikul Cosmos": {
+  "miss": 1791896444
+ },
+ "Amagi": {
+  "miss": 1791896443
+ },
+ "Artivatic Data Labs": {
+  "miss": 1791896470
+ },
+ "Ather Energy": {
+  "miss": 1791896447
+ },
+ "Ati Motors": {
+  "miss": 1791896471
+ },
+ "Aura AI": {
+  "miss": 1791896474
+ },
+ "Avishkaar": {
+  "miss": 1791896477
+ },
+ "Axio (Capital Float)": {
+  "miss": 1791896458
+ },
+ "BankBazaar": {
+  "miss": 1791896475
+ },
+ "Bash.ai": {
+  "miss": 1791896476
+ },
+ "Bizongo": {
+  "miss": 1791896458
+ },
+ "Blinkit": {
+  "miss": 1791896448
+ },
+ "Capillary Technologies": {
+  "miss": 1791896448
+ },
+ "Classplus": {
+  "miss": 1791896453
+ },
+ "Clear (ClearTax)": [
+  "greenhouse",
+  "clear"
+ ],
+ "CleverTap": {
+  "miss": 1791896446
+ },
+ "CoRover.ai": {
+  "miss": 1791896460
+ },
+ "CoinDCX": {
+  "miss": 1791896447
+ },
+ "CoinSwitch": {
+  "miss": 1791896441
+ },
+ "Compiler AI": {
+  "miss": 1791896473
+ },
+ "Coverfox": {
+  "miss": 1791896481
+ },
+ "Credgenics": {
+  "miss": 1791896480
+ },
+ "Crux Intelligence": {
+  "miss": 1791896462
+ },
+ "Cyanir Technologies": {
+  "miss": 1791896473
+ },
+ "Dailyhunt (VerSe)": {
+  "miss": 1791896461
+ },
+ "Darwinbox": {
+  "miss": 1791896440
+ },
+ "DeHaat": {
+  "miss": 1791896448
+ },
+ "Detect Technologies": {
+  "miss": 1791896458
+ },
+ "DevRev": [
+  "greenhouse",
+  "devrev"
+ ],
+ "Digit Insurance": {
+  "miss": 1791896446
+ },
+ "Dukaan": {
+  "miss": 1791896450
+ },
+ "E2E Networks": {
+  "miss": 1791896461
+ },
+ "ET Money": {
+  "miss": 1791896476
+ },
+ "ElasticRun": {
+  "miss": 1791896442
+ },
+ "Entropik Tech": [
+  "smartrecruiters",
+  "entropik"
+ ],
+ "Eruditus": {
+  "miss": 1791896441
+ },
+ "Euler Motors": {
+  "miss": 1791896457
+ },
+ "FSS": {
+  "miss": 1791896474
+ },
+ "Faircent": {
+  "miss": 1791896477
+ },
+ "Fino Payments Bank": {
+  "miss": 1791896476
+ },
+ "FirstCry": {
+  "miss": 1791896442
+ },
+ "Fisdom": {
+  "miss": 1791896475
+ },
+ "FlexiLoans": {
+  "miss": 1791896477
+ },
+ "Floatbot": {
+  "miss": 1791896462
+ },
+ "Fractal Analytics": {
+  "miss": 1791896457
+ },
+ "FundsIndia": {
+  "miss": 1791896477
+ },
+ "Games24x7": {
+  "miss": 1791896470
+ },
+ "Gan.ai": {
+  "miss": 1791896473
+ },
+ "Glance": [
+  "greenhouse",
+  "glance"
+ ],
+ "GreyOrange": {
+  "miss": 1791896457
+ },
+ "Hanooman AI": {
+  "miss": 1791896460
+ },
+ "HealthPlix": {
+  "miss": 1791896472
+ },
+ "HighRadius": [
+  "greenhouse",
+  "highradius"
+ ],
+ "Icertis": {
+  "miss": 1791896445
+ },
+ "InCred": {
+  "miss": 1791896476
+ },
+ "InVideo": {
+  "miss": 1791896462
+ },
+ "Infra.Market": {
+  "miss": 1791896457
+ },
+ "Intello Labs": {
+  "miss": 1791896461
+ },
+ "Juspay": {
+  "miss": 1791896449
+ },
+ "Karya.ai": {
+  "miss": 1791896463
+ },
+ "KredX": [
+  "smartrecruiters",
+  "kredx"
+ ],
+ "KreditBee": {
+  "miss": 1791896479
+ },
+ "Kuvera": {
+  "miss": 1791896476
+ },
+ "LeadSquared": {
+  "miss": 1791896442
+ },
+ "Lendingkart": [
+  "smartrecruiters",
+  "lendingkart"
+ ],
+ "Lentra": {
+  "miss": 1791896465
+ },
+ "LimeChat": {
+  "miss": 1791896476
+ },
+ "LoanTap": {
+  "miss": 1791896480
+ },
+ "LocoNav": {
+  "miss": 1791896474
+ },
+ "LogiNext": [
+  "smartrecruiters",
+  "loginext"
+ ],
+ "M2P Fintech": {
+  "miss": 1791896461
+ },
+ "MPL": {
+  "miss": 1791896445
+ },
+ "MapmyIndia": {
+  "miss": 1791896447
+ },
+ "MobiKwik": {
+  "miss": 1791896477
+ },
+ "Moglix": {
+  "miss": 1791896451
+ },
+ "Mswipe": {
+  "miss": 1791896475
+ },
+ "Navi Technologies": [
+  "ashby",
+  "navi"
+ ],
+ "NeoGrowth": {
+  "miss": 1791896477
+ },
+ "Neysa Networks": {
+  "miss": 1791896470
+ },
+ "Ninjacart": {
+  "miss": 1791896442
+ },
+ "Niramai Health": {
+  "miss": 1791896470
+ },
+ "Niva Bupa": {
+  "miss": 1791896460
+ },
+ "Niyo": {
+  "miss": 1791896479
+ },
+ "OYO": {
+  "miss": 1791896438
+ },
+ "OfBusiness": {
+  "miss": 1791896450
+ },
+ "Ola Electric": {
+  "miss": 1791896445
+ },
+ "OmniScience AI": {
+  "miss": 1791896474
+ },
+ "Omnicard": {
+  "miss": 1791896480
+ },
+ "Open": {
+  "miss": 1791896481
+ },
+ "PayU": {
+  "miss": 1791896479
+ },
+ "Perfios": {
+  "miss": 1791896447
+ },
+ "Physics Wallah": {
+  "miss": 1791896460
+ },
+ "Pixxel": {
+  "miss": 1791896459
+ },
+ "Pocket FM": [
+  "lever",
+  "pocketfm"
+ ],
+ "Policybazaar": {
+  "miss": 1791896450
+ },
+ "Qure.ai": {
+  "miss": 1791896466
+ },
+ "RenewBuy": {
+  "miss": 1791896478
+ },
+ "Rephrase.ai (Adobe)": {
+  "miss": 1791896474
+ },
+ "Rupeek": {
+  "miss": 1791896480
+ },
+ "Scripbox": {
+  "miss": 1791896475
+ },
+ "Setu": {
+  "miss": 1791896479
+ },
+ "Shadowfax": {
+  "miss": 1791896456
+ },
+ "SigTuple": {
+  "miss": 1791896458
+ },
+ "Signzy": {
+  "miss": 1791896462
+ },
+ "Skyroot Aerospace": {
+  "miss": 1791896443
+ },
+ "Spinny": {
+  "miss": 1791896456
+ },
+ "SpotDraft": [
+  "ashby",
+  "spotdraft"
+ ],
+ "Staqu Technologies": {
+  "miss": 1791896464
+ },
+ "Streamoid": {
+  "miss": 1791896474
+ },
+ "Turtlemint": [
+  "smartrecruiters",
+  "turtlemint"
+ ],
+ "Two Platforms": {
+  "miss": 1791896473
+ },
+ "Upstox": [
+  "smartrecruiters",
+  "upstox"
+ ],
+ "Vodex AI": {
+  "miss": 1791896469
+ },
+ "Whatfix": [
+  "smartrecruiters",
+  "whatfix"
+ ],
+ "Zaggle": {
+  "miss": 1791896478
+ },
+ "ZestMoney": {
+  "miss": 1791896477
+ },
+ "boAt Lifestyle": {
+  "miss": 1791896450
+ },
+ "e6data": {
+  "miss": 1791896460
+ },
+ "vahan.ai": {
+  "miss": 1791896474
+ }
+}
