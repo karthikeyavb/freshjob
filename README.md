@@ -1,19 +1,19 @@
 # Fresher Job Agent
 
 Checks career pages of ~190 Indian startups, product, fintech and AI companies (the lists from your five PDFs, de-duplicated, plus a few extras) every 6 hours and
-emails you at bikted29@gmail.com when a **new** fresher / intern / entry-level engineering
+emails you at **YOURMAIL** when a **new** fresher / intern / entry-level engineering
 role appears. Runs free on GitHub Actions, so your laptop doesn't need to be on.
 
 ## Setup (about 10 minutes)
 
 1. **Create a GitHub repo** (private is fine) and upload everything in this folder, including the
    `.github/workflows/check.yml` file.
-2. **Gmail app password** (the account that *sends* the alerts; it can be bikted29@gmail.com itself):
+2. **Gmail app password** (the account that *sends* the alerts; it can be **YOURMAIL** itself):
    - Turn on 2-Step Verification for that Google account.
    - Go to https://myaccount.google.com/apppasswords, create an app password, copy the 16 characters.
 3. In the repo: **Settings → Secrets and variables → Actions → New repository secret**. Add
    `SMTP_USER` (the sending Gmail address) and `SMTP_PASS` (the app password).
-   Alerts are emailed to **bikted29@gmail.com** by default; add an `EMAIL_TO` secret to change it.
+   Alerts are emailed to **YOURMAIL** by default; add an `EMAIL_TO` secret to change it.
    Check Spam the first time and mark the email "Not spam".
 4. **Actions tab → fresher-job-agent → Run workflow** to trigger the first run. The first run emails you every
    fresher opening that is open right now, plus a list of companies it couldn't read; after that you only get
